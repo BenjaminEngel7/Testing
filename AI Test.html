@@ -3,65 +3,95 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Forum Mobil Indonesia</title>
+  <title>Forum AI Indonesia</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      margin: 0; padding: 0;
-      background-color: #f4f4f4;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #eef2f5;
+      margin: 0;
+      padding: 0;
     }
     header {
-      background-color: #333;
-      color: #fff;
-      padding: 15px 20px;
+      background-color: #1e1e2f;
+      color: white;
+      padding: 20px;
       text-align: center;
     }
     .container {
-      max-width: 800px;
-      margin: auto;
+      max-width: 850px;
+      margin: 20px auto;
+      background: white;
       padding: 20px;
-      background-color: #fff;
+      border-radius: 8px;
     }
     .post-form input, .post-form textarea {
       width: 100%;
       padding: 10px;
-      margin-bottom: 10px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .post-form button {
+      padding: 10px 20px;
+      background-color: #1e90ff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .post-form button:hover {
+      background-color: #006fd6;
     }
     .thread {
-      border-bottom: 1px solid #ccc;
-      padding: 10px 0;
+      border-top: 1px solid #ddd;
+      padding: 15px 0;
+    }
+    .thread:first-child {
+      border-top: none;
     }
     .thread h3 {
-      margin: 0;
+      margin: 0 0 5px;
+      color: #1e1e2f;
+    }
+    .thread p {
+      margin: 5px 0;
+      color: #444;
     }
   </style>
 </head>
 <body>
 
   <header>
-    <h1>Forum Mobil Indonesia</h1>
-    <p>Diskusi komunitas pecinta otomotif</p>
+    <h1>Forum AI Indonesia</h1>
+    <p>Tempat diskusi teknologi kecerdasan buatan</p>
   </header>
 
   <div class="container">
-    <h2>Buat Postingan Baru</h2>
+    <h2>Buat Topik Diskusi</h2>
     <form class="post-form">
-      <input type="text" placeholder="Judul topik" required>
-      <textarea rows="4" placeholder="Isi diskusi..." required></textarea>
-      <button type="submit">Kirim</button>
+      <input type="text" placeholder="Judul diskusi AI..." required>
+      <textarea rows="4" placeholder="Apa yang ingin kamu bahas tentang AI?" required></textarea>
+      <button type="submit">Posting</button>
     </form>
 
     <h2>Diskusi Terbaru</h2>
+
     <div class="thread">
-      <h3>Modifikasi Toyota Avanza 2020</h3>
-      <p>Dibuat oleh: <strong>Rizky_Auto</strong></p>
-      <p>Bagaimana cara meningkatkan performa mesin tanpa boros bahan bakar?</p>
+      <h3>Apakah GPT-5 Sudah Dirilis?</h3>
+      <p><strong>Oleh:</strong> AndiAI</p>
+      <p>Ada kabar GPT-5 akan punya reasoning lebih baik. Ada yang sudah coba?</p>
     </div>
 
     <div class="thread">
-      <h3>Perbandingan Honda Civic vs Toyota Corolla</h3>
-      <p>Dibuat oleh: <strong>AdeMobil</strong></p>
-      <p>Mana yang lebih nyaman untuk harian dan irit bensin?</p>
+      <h3>Rekomendasi Dataset untuk Training NLP Bahasa Indonesia</h3>
+      <p><strong>Oleh:</strong> BudiBot</p>
+      <p>Dataset apa yang bagus untuk melatih model NLP agar paham konteks bahasa Indonesia?</p>
+    </div>
+
+    <div class="thread">
+      <h3>Bagaimana Cara Kerja Vision Transformer?</h3>
+      <p><strong>Oleh:</strong> DevAIgirl</p>
+      <p>Apakah ViT lebih bagus dari CNN untuk pengenalan gambar? Apa kelebihan dan kekurangannya?</p>
     </div>
   </div>
 
