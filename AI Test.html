@@ -2,98 +2,134 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
+  <title>AI Chatbot - Forum AI</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Forum AI Indonesia</title>
   <style>
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #eef2f5;
       margin: 0;
-      padding: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
     }
+
     header {
-      background-color: #1e1e2f;
+      background-color: #2c3e50;
       color: white;
-      padding: 20px;
+      padding: 15px;
       text-align: center;
+      font-size: 20px;
     }
-    .container {
-      max-width: 850px;
-      margin: 20px auto;
-      background: white;
-      padding: 20px;
-      border-radius: 8px;
+
+    .chat-container {
+      flex: 1;
+      padding: 15px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
     }
-    .post-form input, .post-form textarea {
-      width: 100%;
-      padding: 10px;
-      margin: 8px 0;
-      border: 1px solid #ccc;
-      border-radius: 4px;
+
+    .message {
+      max-width: 70%;
+      margin: 5px 0;
+      padding: 10px 15px;
+      border-radius: 15px;
+      line-height: 1.4;
     }
-    .post-form button {
-      padding: 10px 20px;
-      background-color: #1e90ff;
+
+    .user {
+      align-self: flex-end;
+      background-color: #3498db;
       color: white;
+    }
+
+    .bot {
+      align-self: flex-start;
+      background-color: #ecf0f1;
+      color: #333;
+    }
+
+    .input-area {
+      display: flex;
+      padding: 10px;
+      background: #fff;
+      border-top: 1px solid #ccc;
+    }
+
+    .input-area input {
+      flex: 1;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 20px;
+      margin-right: 10px;
+    }
+
+    .input-area button {
+      padding: 10px 20px;
       border: none;
-      border-radius: 4px;
+      border-radius: 20px;
+      background-color: #2c3e50;
+      color: white;
       cursor: pointer;
     }
-    .post-form button:hover {
-      background-color: #006fd6;
-    }
-    .thread {
-      border-top: 1px solid #ddd;
-      padding: 15px 0;
-    }
-    .thread:first-child {
-      border-top: none;
-    }
-    .thread h3 {
-      margin: 0 0 5px;
-      color: #1e1e2f;
-    }
-    .thread p {
-      margin: 5px 0;
-      color: #444;
+
+    .input-area button:hover {
+      background-color: #1a242f;
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>Forum AI Indonesia</h1>
-    <p>Tempat diskusi teknologi kecerdasan buatan</p>
-  </header>
+  <header>🤖 Chatbot AI Forum</header>
 
-  <div class="container">
-    <h2>Buat Topik Diskusi</h2>
-    <form class="post-form">
-      <input type="text" placeholder="Judul diskusi AI..." required>
-      <textarea rows="4" placeholder="Apa yang ingin kamu bahas tentang AI?" required></textarea>
-      <button type="submit">Posting</button>
-    </form>
-
-    <h2>Diskusi Terbaru</h2>
-
-    <div class="thread">
-      <h3>Apakah GPT-5 Sudah Dirilis?</h3>
-      <p><strong>Oleh:</strong> AndiAI</p>
-      <p>Ada kabar GPT-5 akan punya reasoning lebih baik. Ada yang sudah coba?</p>
-    </div>
-
-    <div class="thread">
-      <h3>Rekomendasi Dataset untuk Training NLP Bahasa Indonesia</h3>
-      <p><strong>Oleh:</strong> BudiBot</p>
-      <p>Dataset apa yang bagus untuk melatih model NLP agar paham konteks bahasa Indonesia?</p>
-    </div>
-
-    <div class="thread">
-      <h3>Bagaimana Cara Kerja Vision Transformer?</h3>
-      <p><strong>Oleh:</strong> DevAIgirl</p>
-      <p>Apakah ViT lebih bagus dari CNN untuk pengenalan gambar? Apa kelebihan dan kekurangannya?</p>
-    </div>
+  <div class="chat-container" id="chat">
+    <div class="message bot">Halo! Ada yang bisa saya bantu tentang AI hari ini?</div>
   </div>
+
+  <div class="input-area">
+    <input type="text" id="userInput" placeholder="Ketik pesan...">
+    <button onclick="sendMessage()">Kirim</button>
+  </div>
+
+  <script>
+    function sendMessage() {
+      const input = document.getElementById("userInput");
+      const text = input.value.trim();
+      if (!text) return;
+
+      addMessage(text, "user");
+      input.value = "";
+
+      setTimeout(() => {
+        const botReply = generateBotReply(text);
+        addMessage(botReply, "bot");
+      }, 600);
+    }
+
+    function addMessage(msg, type) {
+      const chat = document.getElementById("chat");
+      const div = document.createElement("div");
+      div.classList.add("message", type);
+      div.innerText = msg;
+      chat.appendChild(div);
+      chat.scrollTop = chat.scrollHeight;
+    }
+
+    function generateBotReply(input) {
+      const lower = input.toLowerCase();
+      if (lower.includes("apa itu ai")) {
+        return "AI adalah singkatan dari Artificial Intelligence, yaitu kecerdasan buatan yang dibuat oleh manusia.";
+      } else if (lower.includes("contoh ai")) {
+        return "Beberapa contoh AI: ChatGPT, Siri, Google Assistant, dan mobil self-driving.";
+      } else if (lower.includes("terima kasih")) {
+        return "Sama-sama! 😊";
+      } else {
+        return "Menarik! Bisa kamu jelaskan lebih lanjut?";
+      }
+    }
+  </script>
 
 </body>
 </html>
